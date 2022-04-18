@@ -29,7 +29,7 @@ if (!empty($messages)) {
   <header>
         <div id="sect">
             <div id="h1">
-                <h1>Отправьте форму!</h1>
+                <h1>Заполните данные</h1>
             </div>
         </div>
     </header>
