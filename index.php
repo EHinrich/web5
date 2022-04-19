@@ -263,7 +263,7 @@ else {
     $db = new PDO('mysql:host=localhost;dbname=u41181', $user, $password, array(PDO::ATTR_PERSISTENT => true));
 
   try {
-    $stmt = $db->prepare("INSERT INTO form (name, email, year, sex, number_of_limbs, superpowers, biography, checkbox, login, passwordmd) 
+    $stmt = $db->prepare("INSERT INTO form2 (name, email, year, sex, number_of_limbs, superpowers, biography, checkbox, login, passwordmd) 
     VALUES (:name, :email, :year, :sex, :number_of_limbs, :superpowers, :biography, :checkbox, :login, :passwordmd)");
 
     $stmt -> bindParam(':name', $name);
