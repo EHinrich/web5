@@ -292,7 +292,7 @@ else {
     $permitted_chars1 = 'abcdefghijklmnopqrstuvwxyz';
     $permitted_chars2 = '0123456789';
     $login = substr(str_shuffle($permitted_chars1), 0, 10);
-    $pass = substr(str_shuffle($permitted_chars), 0, 6); 
+    $pass = substr(str_shuffle($permitted_chars2), 0, 6); 
     $passwordmd = md5($pass);
     // Сохраняем в Cookies.
     setcookie('login', $login);
