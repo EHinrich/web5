@@ -255,14 +255,6 @@ else {
   else {
     // Генерируем уникальный логин и пароль.
     // TODO: сделать механизм генерации, например функциями rand(), uniquid(), md5(), substr().
-    $permitted_chars1 = 'abcdefghijklmnopqrstuvwxyz';
-    $permitted_chars2 = '0123456789';
-    $login = substr(str_shuffle($permitted_chars1), 0, 10);
-    $pass = substr(str_shuffle($permitted_chars), 0, 6); 
-    md5($str)
-    // Сохраняем в Cookies.
-    setcookie('login', $login);
-    setcookie('pass', $pass);
 
     // TODO: Сохранение данных формы, логина и хеш md5() пароля в базу данных.
     // ...
@@ -271,8 +263,8 @@ else {
     $db = new PDO('mysql:host=localhost;dbname=u41181', $user, $password, array(PDO::ATTR_PERSISTENT => true));
 
   try {
-    $stmt = $db->prepare("INSERT INTO form (name, email, year, sex, number_of_limbs, superpowers, biography, checkbox) 
-    VALUES (:name, :email, :year, :sex, :number_of_limbs, :superpowers, :biography, :checkbox)");
+    $stmt = $db->prepare("INSERT INTO form (name, email, year, sex, number_of_limbs, superpowers, biography, checkbox, login, passwordmd) 
+    VALUES (:name, :email, :year, :sex, :number_of_limbs, :superpowers, :biography, :checkbox, :login, :passwordmd)");
 
     $stmt -> bindParam(':name', $name);
     $stmt -> bindParam(':email', $email);
@@ -283,7 +275,7 @@ else {
     $stmt -> bindParam(':biography', $biography);
     $stmt -> bindParam(':checkbox', $checkbox);
     $stmt -> bindParam(':login', $login);
-    $stmt -> bindParam(':pass', $pass);
+    $stmt -> bindParam(':passwordmd', $passwordmd);
 
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -296,6 +288,15 @@ else {
       $checkbox = "No";
     else
       $checkbox = $_POST['check'];
+    
+    $permitted_chars1 = 'abcdefghijklmnopqrstuvwxyz';
+    $permitted_chars2 = '0123456789';
+    $login = substr(str_shuffle($permitted_chars1), 0, 10);
+    $pass = substr(str_shuffle($permitted_chars), 0, 6); 
+    $passwordmd = md5($pass);
+    // Сохраняем в Cookies.
+    setcookie('login', $login);
+    setcookie('pass', $pass);
 
     $stmt->execute();
   }
