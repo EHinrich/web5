@@ -251,11 +251,6 @@ else {
       print('Error : ' . $e->getMessage());
       exit();
   }
-    ?>
-    <button>
-    Кнопка
-   </button>
-<?php
   }
   else {
     // Генерируем уникальный логин и пароль.
