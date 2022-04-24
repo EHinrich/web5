@@ -15,6 +15,9 @@ header('Content-Type: text/html; charset=UTF-8');
 // Начинаем сессию.
 session_start();
 
+$messages = array();
+ $errors();
+
 // В суперглобальном массиве $_SESSION хранятся переменные сессии.
 // Будем сохранять туда логин после успешной авторизации.
 if (!empty($_SESSION['login'])) {
@@ -30,21 +33,24 @@ if (!empty($_SESSION['login'])) {
 // и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 ?>
-
 <form action="" method="post">
   <input name="login" />
   <input name="pass" />
   <input type="submit" value="Войти" />
 </form>
-
 <?php
+  if ($errors['login']) {
+    // Удаляем куку, указывая время устаревания в прошлом.
+    setcookie('login_error', '', 100000);
+    // Выводим сообщение.
+    $messages[] = '<div class="error">Заполните имя.</div>';
+  
 }
 // Иначе, если запрос был методом POST, т.е. нужно сделать авторизацию с записью логина в сессию.
 else {
 
   // TODO: Проверть есть ли такой логин и пароль в базе данных.
   // Выдать сообщение об ошибках.
-  $messages = array();
   
   $user = 'u41181';
   $password = '2342349';
@@ -67,9 +73,10 @@ else {
     // Делаем перенаправление.
     header('Location: ./');
   }
-  else 
+  else
   {
-    $messages[] = '<div class="error">Неверные логин и пароль. Попробуйте снова.</div>';
+    setcookie('login_error', '1', time() + 24 * 60 * 60);
+    $errors = TRUE;
+    header('Location: login.php');
   }
- 
 }
