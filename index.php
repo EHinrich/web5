@@ -224,10 +224,7 @@ else {
     $db = new PDO('mysql:host=localhost;dbname=u41181', $user, $password, array(PDO::ATTR_PERSISTENT => true));
 
   try {
-    $stmt = $db->prepare("SELECT FROM form2 WHERE login = '".$_SESSION['login']."'");
-    $stmt->execute();
-    
-    $stmt = $db->prepare("UPDATE form2 SET name, email, year, sex, number_of_limbs, superpowers, biography, checkbox");
+    $stmt = $db->prepare("UPDATE form2 SET name, email, year, sex, number_of_limbs, superpowers, biography, checkbox WHERE login = '".$_SESSION['login']."'");
 
     $name = $_POST['name'];
     $email = $_POST['email'];
