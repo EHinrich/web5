@@ -251,6 +251,9 @@ else {
       print('Error : ' . $e->getMessage());
       exit();
   }
+    <form 
+  <input type="button" value="Выйти" />
+  </form>
   }
   else {
     // Генерируем уникальный логин и пароль.
