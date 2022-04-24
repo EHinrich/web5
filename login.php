@@ -44,11 +44,15 @@ else {
 
   // TODO: Проверть есть ли такой логин и пароль в базе данных.
   // Выдать сообщение об ошибках.
+  $result = mysql_query("SELECT * FROM `form2` WHERE login = '$_POST['login']' && passwordmd = 'md($_POST['pass'])'") or die ("Error.<hr>" . mysql_error());
 
-  // Если все ок, то авторизуем пользователя.
-  $_SESSION['login'] = $_POST['login'];
-  // Записываем ID пользователя.
-  $_SESSION['uid'] = 123;
+  if (mysql_num_rows($result))
+  {
+    // Если все ок, то авторизуем пользователя.
+    $_SESSION['login'] = $_POST['login'];
+    // Записываем ID пользователя.
+    $_SESSION['uid'] = 123;
+  }
 
   // Делаем перенаправление.
   header('Location: ./');
