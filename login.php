@@ -59,6 +59,7 @@ else {
   $login = $_POST['login'];
   $pass = md5($_POST['pass']);
   $stmt = $db->prepare("SELECT * FROM form2 WHERE login = '$login' && passwordmd = '$pass'");
+  $stmt->execute();
   $count = 0;
   foreach ($stmt as $row) {
     $count = 1;
