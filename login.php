@@ -69,8 +69,8 @@ else {
   }
   else 
   {
-    $messages[] = '<div class="error">Неверные логин и пароль. Попробуйте снова.</div>';
     header('Location: login.php');
+    $messages[] = '<div class="error">Неверные логин и пароль. Попробуйте снова.</div>';
   }
  
 }
