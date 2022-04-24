@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
     else
     {
-      $messages[] = sprintf('Вы можете <a href="login.php">выйти</a>')
+      $messages[] = sprintf('Вы можете <a href="login.php">выйти</a>');
     }
   }
 
