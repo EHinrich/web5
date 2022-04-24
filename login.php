@@ -15,10 +15,6 @@ header('Content-Type: text/html; charset=UTF-8');
 // Начинаем сессию.
 session_start();
 
-$messages = array();
-$errors = array();
-$errors['login'] = !empty($_COOKIE['login_error']);
-
 // В суперглобальном массиве $_SESSION хранятся переменные сессии.
 // Будем сохранять туда логин после успешной авторизации.
 if (!empty($_SESSION['login'])) {
@@ -33,6 +29,9 @@ if (!empty($_SESSION['login'])) {
 // В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
 // и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+  $messages = array();
+  $errors = array();
+  $errors['login'] = !empty($_COOKIE['login_error']);
    if ($errors['login']) {
     // Удаляем куку, указывая время устаревания в прошлом.
     setcookie('login_error', '', 100000);
