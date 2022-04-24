@@ -44,6 +44,8 @@ else {
 
   // TODO: Проверть есть ли такой логин и пароль в базе данных.
   // Выдать сообщение об ошибках.
+  $messages = array();
+  
   $user = 'u41181';
   $password = '2342349';
   $db = new PDO('mysql:host=localhost;dbname=u41181', $user, $password, array(PDO::ATTR_PERSISTENT => true));
@@ -62,8 +64,13 @@ else {
     $_SESSION['login'] = $_POST['login'];
     // Записываем ID пользователя.
     $_SESSION['uid'] = 123;
+    // Делаем перенаправление.
+    header('Location: ./');
   }
-
-  // Делаем перенаправление.
-  header('Location: ./');
+  else 
+  {
+    $messages[] = '<div class="error">Неверные логин и пароль. Попробуйте снова.</div>';
+    header('Location: login.php');
+  }
+ 
 }
