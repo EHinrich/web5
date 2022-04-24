@@ -32,19 +32,18 @@ if (!empty($_SESSION['login'])) {
 // В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
 // и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+   if ($errors['login']) {
+    // Удаляем куку, указывая время устаревания в прошлом.
+    setcookie('login_error', '', 100000);
+    // Выводим сообщение.
+    $messages[] = '<div class="error">Неверныйлогин и пароль.</div>';
 ?>
 <form action="" method="post">
   <input name="login" />
   <input name="pass" />
   <input type="submit" value="Войти" />
 </form>
-<?php
-  if ($errors['login']) {
-    // Удаляем куку, указывая время устаревания в прошлом.
-    setcookie('login_error', '', 100000);
-    // Выводим сообщение.
-    $messages[] = '<div class="error">Заполните имя.</div>';
-  
+<?php 
 }
 // Иначе, если запрос был методом POST, т.е. нужно сделать авторизацию с записью логина в сессию.
 else {
