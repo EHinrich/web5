@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Удаляем куку, указывая время устаревания в прошлом.
     setcookie('login_error', '', 100000);
     // Выводим сообщение.
-    $messages[] = '<div class="error">Неверныйлогин и пароль.</div>';
+    $messages[] = 'Неверныйлогин и пароль.';
    }
 ?>
 <form action="" method="post">
