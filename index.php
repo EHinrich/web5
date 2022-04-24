@@ -224,17 +224,10 @@ else {
     $db = new PDO('mysql:host=localhost;dbname=u41181', $user, $password, array(PDO::ATTR_PERSISTENT => true));
 
   try {
-    $stmt = $db->prepare("INSERT INTO form (name, email, year, sex, number_of_limbs, superpowers, biography, checkbox) 
-    VALUES (:name, :email, :year, :sex, :number_of_limbs, :superpowers, :biography, :checkbox)");
-
-    $stmt -> bindParam(':name', $name);
-    $stmt -> bindParam(':email', $email);
-    $stmt -> bindParam(':year', $year);
-    $stmt -> bindParam(':sex', $sex);
-    $stmt -> bindParam(':number_of_limbs', $number_of_limbs);
-    $stmt -> bindParam(':superpowers', $superpowers);
-    $stmt -> bindParam(':biography', $biography);
-    $stmt -> bindParam(':checkbox', $checkbox);
+    $stmt = $db->prepare("SELECT FROM form2 WHERE login = '$_SESSION['login']'");
+    $stmt->execute();
+    
+    $stmt = $db->prepare("UPDATE form2 set name, email, year, sex, number_of_limbs, superpowers, biography, checkbox);
 
     $name = $_POST['name'];
     $email = $_POST['email'];
