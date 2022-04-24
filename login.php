@@ -45,7 +45,7 @@ else {
   // TODO: Проверть есть ли такой логин и пароль в базе данных.
   // Выдать сообщение об ошибках.
   $login = $_POST['login'];
-  $pass = md($_POST['pass']);
+  $pass = md5($_POST['pass']);
   $result = mysql_query("SELECT * FROM `form2` WHERE login = '$login' && passwordmd = '$pass'") or die ("Error.<hr>" . mysql_error());
 
   if (mysql_num_rows($result))
