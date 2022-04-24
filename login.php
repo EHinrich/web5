@@ -16,7 +16,7 @@ header('Content-Type: text/html; charset=UTF-8');
 session_start();
 
 $messages = array();
-$errors() = array();
+$errors = array();
 $errors['login'] = !empty($_COOKIE['login_error']);
 
 // В суперглобальном массиве $_SESSION хранятся переменные сессии.
