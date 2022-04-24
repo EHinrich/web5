@@ -44,11 +44,19 @@ else {
 
   // TODO: Проверть есть ли такой логин и пароль в базе данных.
   // Выдать сообщение об ошибках.
+  $user = 'u41181';
+  $password = '2342349';
+  $db = new PDO('mysql:host=localhost;dbname=u41181', $user, $password, array(PDO::ATTR_PERSISTENT => true));
+  
   $login = $_POST['login'];
   $pass = md5($_POST['pass']);
-  $result = mysql_query("SELECT * FROM `form2` WHERE login = '$login' && passwordmd = '$pass'") or die ("Error.<hr>" . mysql_error());
+  $stmt = $db->prepare("SELECT * FROM form2 WHERE login = '$login' && passwordmd = '$pass'");
+  $count = 0;
+  foreach ($stmt as $row) {
+    $count = 1;
+  }
 
-  if (mysql_num_rows($result))
+  if ($count)
   {
     // Если все ок, то авторизуем пользователя.
     $_SESSION['login'] = $_POST['login'];
