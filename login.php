@@ -16,7 +16,8 @@ header('Content-Type: text/html; charset=UTF-8');
 session_start();
 
 $messages = array();
- $errors();
+$errors();
+$errors['login'] = !empty($_COOKIE['login_error']);
 
 // В суперглобальном массиве $_SESSION хранятся переменные сессии.
 // Будем сохранять туда логин после успешной авторизации.
@@ -37,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     setcookie('login_error', '', 100000);
     // Выводим сообщение.
     $messages[] = '<div class="error">Неверныйлогин и пароль.</div>';
+   }
 ?>
 <form action="" method="post">
   <input name="login" />
@@ -50,6 +52,7 @@ else {
 
   // TODO: Проверть есть ли такой логин и пароль в базе данных.
   // Выдать сообщение об ошибках.
+  $errors = FALSE;
   
   $user = 'u41181';
   $password = '2342349';
