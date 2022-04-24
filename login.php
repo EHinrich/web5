@@ -29,14 +29,13 @@ if (!empty($_SESSION['login'])) {
 // В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
 // и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-  $messages = array();
   $errors = array();
   $errors['login'] = !empty($_COOKIE['login_error']);
    if ($errors['login']) {
     // Удаляем куку, указывая время устаревания в прошлом.
     setcookie('login_error', '', 100000);
     // Выводим сообщение.
-    $messages[] = 'Неверныйлогин и пароль.';
+    printf('Неверный логин и пароль.');
    }
 ?>
 <form action="" method="post">
