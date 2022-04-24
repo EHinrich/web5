@@ -252,9 +252,9 @@ else {
       exit();
   }
     ?>
-    <form 
-  <input type="button" value="Выйти" />
-  </form>
+    <button>
+    Кнопка
+   </button>
 <?php
   }
   else {
