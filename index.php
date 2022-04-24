@@ -225,8 +225,9 @@ else {
 
   try {
     $stmt = $db->prepare("SELECT FROM form2 WHERE login = '".$_SESSION['login']."'");
+    $stmt->execute();
     
-    $stmt = $db->prepare("UPDATE form2 set name, email, year, sex, number_of_limbs, superpowers, biography, checkbox);
+    $stmt = $db->prepare("UPDATE form2 SET name, email, year, sex, number_of_limbs, superpowers, biography, checkbox");
 
     $name = $_POST['name'];
     $email = $_POST['email'];
