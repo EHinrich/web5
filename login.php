@@ -79,6 +79,10 @@ else {
   {
     setcookie('login_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
+  }
+  if ($errors) {
+    // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
     header('Location: login.php');
+    exit();
   }
 }
