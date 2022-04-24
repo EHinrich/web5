@@ -110,7 +110,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // TODO: загрузить данные пользователя из БД
     // и заполнить переменную $values,
     // предварительно санитизовав.
+    
+    
+    
     printf('Вход с логином %s, uid %d', $_SESSION['login'], $_SESSION['uid']);
+    $messages[] = sprintf('Вы можете <a href="login.php">выйти</a>');
   }
 
   // Включаем содержимое файла form.php.
