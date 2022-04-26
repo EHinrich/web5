@@ -231,7 +231,6 @@ else {
     // Удаляем Cookies с признаками ошибок.
     setcookie('name_error', '', 100000);
     setcookie('email_error', '', 100000);
-    setcookie('year_error', '', 100000);
     setcookie('radio-group-1_error', '', 100000);
     setcookie('radio-group-2_error', '', 100000);
     setcookie('super_error', '', 100000);
