@@ -225,8 +225,17 @@ else {
 
   try {
     $login = $_SESSION['login'];
-    $stmt = $db->prepare("UPDATE form2 SET name, email, year, sex, number_of_limbs, superpowers, biography, checkbox WHERE login = '$login'");
+    $stmt = $db->prepare("UPDATE form2 SET name=:name, email=:email, year=:year, sex=:sex, number_of_limbs=:number_of_limbs, superpowers=:superpowers, biography=:biography, checkbox WHERE login = '$login'");
 
+    $stmt -> bindParam(':name', $name);
+    $stmt -> bindParam(':email', $email);
+    $stmt -> bindParam(':year', $year);
+    $stmt -> bindParam(':sex', $sex);
+    $stmt -> bindParam(':number_of_limbs', $number_of_limbs);
+    $stmt -> bindParam(':superpowers', $superpowers);
+    $stmt -> bindParam(':biography', $biography);
+    $stmt -> bindParam(':checkbox', $checkbox);
+    
     $name = $_POST['name'];
     $email = $_POST['email'];
     $year = $_POST['year'];
