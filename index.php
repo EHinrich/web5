@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
   }
   else{
-    if (empty($_COOKIE['pass']))
+    if (empty($_SESSION['login']))
     {
       $messages[] = sprintf('Вы можете <a href="login.php">войти</a> если уже зарегистрированы');
     }
