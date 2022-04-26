@@ -31,9 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         strip_tags($_COOKIE['login']),
         strip_tags($_COOKIE['pass']));
     }
-    else
-      $messages[] = sprintf('Вы можете <a href="login.php">войти</a> если уже зарегистрированы');
   }
+  else
+      $messages[] = sprintf('Вы можете <a href="login.php">войти</a> если уже зарегистрированы');
 
   // Складываем признак ошибок в массив.
   $errors = array();
