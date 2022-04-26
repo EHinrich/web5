@@ -61,7 +61,6 @@ if (!empty($messages)) {
       
               Пол:<br />
               <label>
-                  <?php if ($errors['radio-group-1']) {print 'class="error"';} ?>
                   <input type="radio" 
                          name="radio-group-1"
                          value="male"
