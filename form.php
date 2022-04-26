@@ -54,7 +54,7 @@ if (!empty($messages)) {
       
               <select id="year" name="year">
                 <?php for ($year = 1920; $year <= 2022; $year++) { ?>
-                <option value="<?php print($year); ?>"><?php print($year); ?></option>
+                <option <?php if ($year == $values['year']) {print('selected="selected"');} ?> value="<?php print($year); ?>"><?php print($year); ?></option>
                 <?php } ?>
               </select> <br />
 
