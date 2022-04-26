@@ -52,12 +52,12 @@ if (!empty($messages)) {
                          type="email" />
               </label><br />
       
-              <select id="year" name="year"></select> <br />
-        <script>for (let year = 1920; year <= 2022; year++) {
-            let options = document.createElement("OPTION");
-            document.getElementById("year").appendChild(options).innerHTML = year;
-          }
-        </script>
+              <select id="year" name="year">
+                <?php for ($year = 1920; $year <= 2022; $year++) { ?>
+                <option value="<?php print($year); ?>"><?php print($year); ?></option>
+                <?php } ?>
+              </select> <br />
+
       
               Пол:<br />
               <label>
