@@ -164,13 +164,7 @@ else {
     setcookie('email_value', $_POST['email'], time() + 30 * 24 * 60 * 60);
   }
   
-  if (empty($_POST['year'])) {
-    setcookie('year_error', '1', time() + 24 * 60 * 60);
-    $errors = TRUE;
-  }
-  else {
     setcookie('year_value', $_POST['year'], time() + 30 * 24 * 60 * 60);
-  }
 
   if (empty($_POST['radio-group-1'])) {
     setcookie('radio-group-1_error', '1', time() + 24 * 60 * 60);
