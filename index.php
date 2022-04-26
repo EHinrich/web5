@@ -14,9 +14,6 @@ header('Content-Type: text/html; charset=UTF-8');
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   // Массив для временного хранения сообщений пользователю.
   $messages = array();
-  if (!(!empty($_SESSION['login']) && !empty($_COOKIE[session_name()]))){
-    $messages[] = sprintf('Вы можете <a href="login.php">войти</a> если уже зарегистрированы');
-  }
 
   // В суперглобальном массиве $_COOKIE PHP хранит все имена и значения куки текущего запроса.
   // Выдаем сообщение об успешном сохранении.
@@ -34,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         strip_tags($_COOKIE['login']),
         strip_tags($_COOKIE['pass']));
     }
+    else
+      $messages[] = sprintf('Вы можете <a href="login.php">войти</a> если уже зарегистрированы');
   }
 
   // Складываем признак ошибок в массив.
