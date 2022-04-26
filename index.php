@@ -32,12 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         strip_tags($_COOKIE['pass']));
     }
   }
-  else{
-    if (empty($_SESSION['login']))
-    {
-      $messages[] = sprintf('Вы можете <a href="login.php">войти</a> если уже зарегистрированы');
-    }
-  }
 
   // Складываем признак ошибок в массив.
   $errors = array();
@@ -140,6 +134,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
     printf('Вход с логином %s, uid %d', $_SESSION['login'], $_SESSION['uid']);
     $messages[] = sprintf('Вы можете <a href="login.php">выйти</a>');
+  }
+  else {
+    $messages[] = sprintf('Вы можете <a href="login.php">войти</a> если уже зарегистрированы');
   }
 
   // Включаем содержимое файла form.php.
