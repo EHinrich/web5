@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
    }
     
     
-    printf('Вход с логином %s, uid %d', $_SESSION['login'], $_SESSION['uid']);
+    printf('Вход с логином %s, $_SESSION['login']);
     $messages[] = sprintf('Вы можете <a href="login.php">выйти</a>');
   }
   else {
