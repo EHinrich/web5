@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $errors = array();
   $errors['name'] = !empty($_COOKIE['name_error']);
   $errors['email'] = !empty($_COOKIE['email_error']);
-  $errors['year'] = !empty($_COOKIE['year_error']);
   $errors['radio-group-1'] = !empty($_COOKIE['radio-group-1_error']);
   $errors['radio-group-2'] = !empty($_COOKIE['radio-group-2_error']);
   $errors['super'] = !empty($_COOKIE['super_error']);
