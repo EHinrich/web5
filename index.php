@@ -34,7 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
   else{
     if (empty($_COOKIE['pass']))
-    $messages[] = sprintf('Вы можете <a href="login.php">войти</a> если уже зарегистрированы');
+    {
+      $messages[] = sprintf('Вы можете <a href="login.php">войти</a> если уже зарегистрированы');
+    }
   }
 
   // Складываем признак ошибок в массив.
